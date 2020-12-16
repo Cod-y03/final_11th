@@ -64,11 +64,44 @@ public class Character
         this.magic = magic; 
         this.influence = influence;
     }
+    public String getName() {
+        return this.name;
+    }
 
     public String toString() {
         return this.name + "," + this.type + "," + this.strength + "," 
         + this.toughness + "," + this.intelligence + "," + this.magic + ","
         + this.influence;
+    }
+
+    public void reroll() {
+        int stat = randomGenerator.nextInt(3) + 7;
+        int reroller = randomGenerator.nextInt(4);
+            if (reroller == 0) {
+            typeCreator(stat);
+            this.strength = stat;
+            this.type = "Knight";
+        }
+        if (reroller == 1) {
+            typeCreator(stat);
+            this.toughness = stat;
+            this.type = "Peasant";
+        }
+        if (reroller == 2) {
+            typeCreator(stat);
+            this.intelligence = stat;
+            this.type = "Cleric";
+        }
+        if (reroller == 3) {
+            typeCreator(stat);
+            this.magic = stat;
+            this.type = "Mage";
+        }
+        if (reroller == 4) {
+            typeCreator(stat);
+            this.influence = stat;
+            this.type = "Courtier";
+        }
     }
 
 }
